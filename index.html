@@ -14,7 +14,7 @@
             --stellar: #FFD75E;
             --snow: #FFFFFF;
             --offer: #4CAF50;
-            
+
             --bg0: #061426;
             --bg1: #0B2A52;
             --glass: rgba(255,255,255,.08);
@@ -22,21 +22,22 @@
             --shadow: 0 18px 50px rgba(0,0,0,.45);
             --radius: 22px;
             --radius2: 28px;
-            
+
             --text: rgba(255,255,255,.92);
             --muted: rgba(215,234,251,.78);
             --max: 1100px;
         }
-.site-avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--glacier);
-  box-shadow: 0 0 20px rgba(136,183,243,.35);
-}
 
-        * { 
+        .site-avatar {
+          width: 72px;
+          height: 72px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid var(--glacier);
+          box-shadow: 0 0 20px rgba(136,183,243,.35);
+        }
+
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
@@ -75,38 +76,16 @@
         }
 
         @keyframes fall {
-            0% {
-                transform: translateY(0) rotate(0deg) translateX(0);
-                opacity: 0;
-            }
-            10% {
-                opacity: 1;
-            }
-            90% {
-                opacity: 0.8;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg) translateX(30px);
-                opacity: 0;
-            }
+            0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(100vh) rotate(360deg) translateX(30px); opacity: 0; }
         }
 
-        .snowflake:nth-child(4n) {
-            animation-duration: 10s;
-            font-size: 0.7em;
-        }
-        .snowflake:nth-child(4n+1) {
-            animation-duration: 14s;
-            font-size: 1em;
-        }
-        .snowflake:nth-child(4n+2) {
-            animation-duration: 18s;
-            font-size: 0.9em;
-        }
-        .snowflake:nth-child(4n+3) {
-            animation-duration: 22s;
-            font-size: 1.1em;
-        }
+        .snowflake:nth-child(4n) { animation-duration: 10s; font-size: 0.7em; }
+        .snowflake:nth-child(4n+1) { animation-duration: 14s; font-size: 1em; }
+        .snowflake:nth-child(4n+2) { animation-duration: 18s; font-size: 0.9em; }
+        .snowflake:nth-child(4n+3) { animation-duration: 22s; font-size: 1.1em; }
 
         /* CONTAINER */
         .container {
@@ -214,14 +193,10 @@
             transform: scale(1.05);
         }
 
-        .led-btn:active {
-            transform: scale(.98);
-        }
+        .led-btn:active { transform: scale(.98); }
 
         /* HERO SECTION */
-        .hero {
-            padding: 22px 0 18px;
-        }
+        .hero { padding: 22px 0 18px; }
 
         .hero-card {
             border-radius: var(--radius2);
@@ -236,7 +211,7 @@
             content: "";
             position: absolute;
             inset: -2px;
-            background: 
+            background:
                 radial-gradient(600px 220px at 20% 0%, rgba(136,183,243,.35), transparent 60%),
                 radial-gradient(700px 260px at 90% 40%, rgba(26,75,143,.45), transparent 62%);
             opacity: .7;
@@ -310,9 +285,7 @@
             box-shadow: 0 8px 25px rgba(136,183,243,.2);
         }
 
-        .btn:active {
-            transform: translateY(0);
-        }
+        .btn:active { transform: translateY(0); }
 
         .btn-primary {
             background: linear-gradient(180deg, rgba(255,215,94,.96), rgba(255,215,94,.82));
@@ -333,9 +306,7 @@
         }
 
         /* SECTIONS */
-        .section {
-            padding: 14px 0 18px;
-        }
+        .section { padding: 14px 0 18px; }
 
         .section-title {
             margin: 10px 0 12px;
@@ -344,10 +315,7 @@
             color: var(--arctic);
         }
 
-        .grid {
-            display: grid;
-            gap: 12px;
-        }
+        .grid { display: grid; gap: 12px; }
 
         @media (min-width: 860px) {
             .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
@@ -459,9 +427,7 @@
             transform: translateY(-2px);
         }
 
-        .iconlink:active {
-            transform: scale(.99);
-        }
+        .iconlink:active { transform: scale(.99); }
 
         .iconlink svg {
             width: 18px;
@@ -469,25 +435,37 @@
             opacity: .9;
         }
 
+        /* Ícones Roblox no rodapé (imagens) */
+        .iconlink img.roblox-avatar {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .iconlink img.roblox-group {
+            width: 18px;
+            height: 18px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* Ícones com degradê sutil (Instagram, TikTok, YouTube) */
+        .iconlink.ig svg { filter: drop-shadow(0 0 3px rgba(225, 48, 108, 0.4)); }
+        .iconlink.tt svg { filter: drop-shadow(0 0 3px rgba(37, 244, 238, 0.4)); }
+        .iconlink.yt svg { filter: drop-shadow(0 0 3px rgba(255, 0, 0, 0.4)); }
+
         /* PAGES */
         .page {
             display: none;
             animation: fadeIn 0.5s ease;
         }
 
-        .page.active {
-            display: block;
-        }
+        .page.active { display: block; }
 
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .back-btn {
@@ -511,37 +489,50 @@
         }
 
         /* VALUES PAGE */
-        .conversion-banner {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(180deg, rgba(255,215,94,.96), rgba(255,215,94,.88));
-            color: var(--deep);
-            padding: 15px 20px;
-            text-align: center;
-            font-weight: bold;
-            box-shadow: 0 -5px 20px rgba(0,0,0,.3);
-            z-index: 999;
-            font-size: 14px;
+        :root{ --banner-h: 64px; }
+
+        /* Banner fixo (amarelo) - corrigido para iOS */
+        .conversion-banner{
+          position: fixed;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background: linear-gradient(180deg, rgba(255,215,94,.96), rgba(255,215,94,.88));
+          color: var(--deep);
+          padding: 12px 16px;
+          padding-bottom: calc(12px + env(safe-area-inset-bottom));
+          text-align: center;
+          font-weight: bold;
+          box-shadow: 0 -5px 20px rgba(0,0,0,.3);
+          z-index: 999;
+          font-size: 14px;
+          transform: translateZ(0);
+          -webkit-transform: translateZ(0);
+          will-change: transform;
         }
 
-        @media (max-width: 768px) {
-            .hero-title { font-size: 2rem; }
-            .hero-desc { font-size: 1rem; }
-            .brand h1 { font-size: 1.5rem; }
-            .led-text { font-size: 0.9rem; }
-            .conversion-banner { font-size: 12px; padding: 12px 15px; }
-        }
-    
-        /* iOS overscroll (barra branca) — garante fundo consistente */
-        html, body {
-            background-color: var(--bg0);
-            overscroll-behavior-y: none;
+        body{ padding-bottom: 0; }
+
+        .values-wrap{
+          padding-bottom: calc(var(--banner-h) + 24px + env(safe-area-inset-bottom));
         }
 
-        /* Espaço para o banner fixo não cobrir conteúdo */
-        .values-wrap { padding-bottom: 90px; }
+        @media (max-width: 768px){
+          .hero-title { font-size: 2rem; }
+          .hero-desc { font-size: 1rem; }
+          .brand h1 { font-size: 1.5rem; }
+          .led-text { font-size: 0.9rem; }
+
+          .conversion-banner{
+            font-size: 12px;
+            padding-top: 12px;
+            padding-left: 15px;
+            padding-right: 15px;
+            padding-bottom: calc(12px + env(safe-area-inset-bottom));
+          }
+
+          :root{ --banner-h: 58px; }
+        }
 
         /* Galeria vertical (1080x1920) com zoom */
         .gallery {
@@ -635,20 +626,20 @@
             color: var(--muted);
             border-top: 1px solid rgba(136,183,243,.18);
         }
+
         .brand-avatar {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  object-fit: cover;
-
-  border: 2px solid var(--glacier);
-  box-shadow:
-    0 0 12px rgba(136, 183, 243, 0.45),
-    inset 0 0 6px rgba(255, 255, 255, 0.25);
-}
-
-</style>
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 2px solid var(--glacier);
+          box-shadow:
+            0 0 12px rgba(136, 183, 243, 0.45),
+            inset 0 0 6px rgba(255, 255, 255, 0.25);
+        }
+    </style>
 </head>
+
 <body>
     <!-- NEVE REALISTA -->
     <div class="snow-container" id="snowContainer"></div>
@@ -658,12 +649,7 @@
         <div class="container">
             <div class="header-inner">
                 <div class="brand">
-                 <img
-                     src="favicon.png"
-                     alt="Foto do Theus"
-                     class="brand-avatar"
-                      />
-
+                    <img src="favicon.png" alt="Foto do Theus" class="brand-avatar" />
                     <div>
                         <h1>Murder Mystery 2</h1>
                         <small>Loja do Theus • @specteteu</small>
@@ -687,7 +673,7 @@
                         <span class="kicker">💙 @specteteu • Compras via Direct</span>
                         <h2 class="hero-title">Boas vindas a loja do Theus ⭐</h2>
                         <p class="hero-desc">
-                            Aqui você encontra <strong>valores atualizados</strong>, <strong>estoque</strong> e informações claras para comprar com segurança e rapidez. Tudo feito pra funcionar perfeito no celular (link na bio).
+                            Aqui você encontra <strong>valores atualizados</strong>, <strong>estoque</strong> e informações claras para comprar com segurança e rapidez.
                         </p>
 
                         <div class="hero-actions">
@@ -698,13 +684,13 @@
                                 Valores MM2 / Estoque
                             </button>
 
-                            <button class="btn" onclick="navigateTo('termsPage')">
+                            <a href="termos.html" class="btn">
                                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
                                     <path d="M7 3h7l3 3v15H7V3Z" stroke="currentColor" stroke-width="2"/>
                                     <path d="M9 11h6M9 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                                 </svg>
                                 Termos de Compra
-                            </button>
+                            </a>
 
                             <button class="btn" onclick="navigateTo('groupPage')">
                                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
@@ -719,30 +705,36 @@
             </section>
 
             <section class="section">
-                <h3 class="section-title">Por que comprar conosco?</h3>
-                <div class="grid cols-3">
-                    <article class="card">
-                        <span class="tag">🛡️ Segurança</span>
-                        <h3>Transação clara</h3>
-                        <p>Processo direto, com confirmação e comunicação objetiva para evitar ruído e garantir confiança.</p>
-                    </article>
+              <h3 class="section-title">Por que comprar conosco?</h3>
+              <div class="grid cols-3">
+                <article class="card">
+                  <span class="tag">🛡️ Segurança</span>
+                  <h3>Transação transparente</h3>
+                  <p>
+                    Processo simples e seguro, com comunicação clara em todas as etapas.
+                    Entrega garantida ou seu dinheiro de volta.
+                  </p>
+                </article>
 
-                    <article class="card">
-                        <span class="tag">⚡ Rapidez</span>
-                        <h3>Atendimento ágil</h3>
-                        <p>Fluxo simples e mobile-first – perfeito pra quem vem do link na bio e quer resolver rápido.</p>
-                    </article>
-</div>
+                <article class="card">
+                  <span class="tag">⚡ Rapidez</span>
+                  <h3>Atendimento e entrega ágeis</h3>
+                  <p>
+                    Quando estamos <strong>ON</strong>, a entrega costuma ser imediata.
+                    Atendimento rápido, direto e com total suporte durante a compra.
+                  </p>
+                </article>
+              </div>
             </section>
 
             <section class="section">
                 <h3 class="section-title">Acesso rápido</h3>
                 <div class="grid cols-2">
                     <div class="notice">
-                        <strong>Comprar é simples:</strong> acesse o estoque/valores e fale no Direct/DM. Em "Termos", você encontra o documento oficial.
+                        <strong>Comprar é simples:</strong> acesse o estoque/valores e fale seu pedido no PV do Tiktok ou Instagram. Em "Termos", você entende tudo que acontece durante e após o ato da compra.
                     </div>
                     <div class="notice">
-                        <strong>Quer apoiar o criador?</strong> No "Grupo do Roblox" você vê as roupas à venda e como isso ajuda o Theus.
+                        <strong>Quer apoiar o criador?</strong> No "Grupo do Roblox" você descobre como pode me apoiar sem gastar dinheiro real. 😊
                     </div>
                 </div>
             </section>
@@ -755,23 +747,23 @@
                     </div>
 
                     <nav class="iconbar">
-                        <a class="iconlink" href="https://www.roblox.com/" target="_blank" rel="noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M8 3h8l5 5v8l-5 5H8l-5-5V8l5-5Z" stroke="currentColor" stroke-width="2"/></svg>
+                        <a class="iconlink" href="https://www.roblox.com/users/7516764117/profile" target="_blank" rel="noreferrer">
+                            <img src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D2C403E8EA2811BDB2DA5FEE2D6C9B8F-Png/150/150/AvatarHeadshot/Webp/noFilter" alt="Perfil Roblox" class="roblox-avatar" />
                             Perfil Roblox
                         </a>
-                        <a class="iconlink" href="https://www.roblox.com/groups/" target="_blank" rel="noreferrer">
-                            <svg viewBox="0 0 24 24" fill="none"><path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z" stroke="currentColor" stroke-width="2"/></svg>
+                        <a class="iconlink" href="https://www.roblox.com/pt/communities/35927285" target="_blank" rel="noreferrer">
+                            <img src="https://tr.rbxcdn.com/180DAY-2f6b47f735c379cfa4aabd861b0e3b3e/150/150/Image/Webp/noFilter" alt="Grupo Roblox" class="roblox-group" />
                             Grupo Roblox
                         </a>
-                        <a class="iconlink" href="https://instagram.com/specteteu" target="_blank" rel="noreferrer">
+                        <a class="iconlink ig" href="https://instagram.com/specteteu1" target="_blank" rel="noreferrer">
                             <svg viewBox="0 0 24 24" fill="none"><path d="M7 3h10a4 4 0 0 1 4 4v10a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4Z" stroke="currentColor" stroke-width="2"/></svg>
                             Instagram
                         </a>
-                        <a class="iconlink" href="https://tiktok.com/@specteteu" target="_blank" rel="noreferrer">
+                        <a class="iconlink tt" href="https://tiktok.com/@specteteu1" target="_blank" rel="noreferrer">
                             <svg viewBox="0 0 24 24" fill="none"><path d="M14 3v10.2a3.8 3.8 0 1 1-3-3.7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                             TikTok
                         </a>
-                        <a class="iconlink" href="https://youtube.com" target="_blank" rel="noreferrer">
+                        <a class="iconlink yt" href="https://youtube.com/@specteteu" target="_blank" rel="noreferrer">
                             <svg viewBox="0 0 24 24" fill="none"><path d="M10 9.5 16 12l-6 2.5v-5Z" stroke="currentColor" stroke-width="2"/></svg>
                             YouTube
                         </a>
@@ -782,6 +774,7 @@
 
         <!-- VALUES PAGE -->
         <div id="valuesPage" class="page">
+            <!-- ✅ FIX: back button corrigido -->
             <a href="#" class="back-btn" onclick="navigateTo('homePage'); return false;">
                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
                     <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -790,36 +783,34 @@
             </a>
 
             <div class="values-wrap">
-
-            <section class="hero">
-                <div class="hero-card">
-                    <div class="hero-inner">
-                        <span class="kicker">📸 Estoque em fotos (vertical)</span>
-                        <h2 class="hero-title">Valores MM2 / Estoque Atual</h2>
-                        <p class="hero-desc">Veja as imagens verticais (1080×1920). Toque para ampliar e conferir detalhes. A compra é via Direct do Instagram ou PV do TikTok.</p>
+                <section class="hero">
+                    <div class="hero-card">
+                        <div class="hero-inner">
+                            <span class="kicker">📸 Estoque em fotos</span>
+                            <h2 class="hero-title">Valores MM2 / Estoque Atual</h2>
+                            <p class="hero-desc">Toque na foto para ampliar e conferir detalhes. A compra é <strong>somente</strong> feita via Direct do Instagram ou PV do TikTok.</p>
+                        </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section class="section">
-                <h3 class="section-title">Galeria (toque para ampliar)</h3>
-                <div class="gallery" id="gallery"></div>
-            </section>
+                <section class="section">
+                    <h3 class="section-title">Valores + estoque atual (toque para ampliar)</h3>
+                    <div class="gallery" id="gallery"></div>
+                </section>
 
-            <footer class="footer">
-                <div class="row">
-                    <div>
-                        <strong style="color: var(--arctic)">@specteteu</strong><br/>
-                        <span>Links rápidos</span>
+                <footer class="footer">
+                    <div class="row">
+                        <div>
+                            <strong style="color: var(--arctic)">@specteteu</strong><br/>
+                            <span>Links rápidos</span>
+                        </div>
+                        <nav class="iconbar" aria-label="Links essenciais">
+                            <a class="iconlink" href="https://www.roblox.com/users/7516764117/profile" target="_blank" rel="noreferrer">Roblox</a>
+                            <a class="iconlink" href="https://instagram.com/specteteu1" target="_blank" rel="noreferrer">Instagram</a>
+                            <a class="iconlink" href="https://tiktok.com/@specteteu1" target="_blank" rel="noreferrer">TikTok</a>
+                        </nav>
                     </div>
-                    <nav class="iconbar" aria-label="Links essenciais">
-                        <a class="iconlink" href="https://www.roblox.com/" target="_blank" rel="noreferrer">Roblox</a>
-                        <a class="iconlink" href="https://instagram.com/specteteu" target="_blank" rel="noreferrer">Instagram</a>
-                        <a class="iconlink" href="https://tiktok.com/@specteteu" target="_blank" rel="noreferrer">TikTok</a>
-                    </nav>
-                </div>
-            </footer>
-
+                </footer>
             </div>
 
             <div class="conversion-banner">
@@ -842,15 +833,17 @@
                         <span class="kicker">📄 Documento oficial</span>
                         <h2 class="hero-title">Termos de Compra</h2>
                         <p class="hero-desc">Para manter tudo transparente, os termos ficam no Google Docs. Clique no botão abaixo para acessar o documento oficial.</p>
-                        
+
                         <div class="hero-actions">
-                            <a href="https://docs.google.com" target="_blank" class="btn btn-primary">
+                            <a href="termos.html" class="btn btn-primary">
                                 <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
                                     <path d="M7 3h7l3 3v15H7V3Z" stroke="currentColor" stroke-width="2"/>
+                                    <path d="M9 11h6M9 15h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                                 </svg>
-                                Abrir Termos no Google Docs
+                                Abrir Termos no site
                             </a>
                         </div>
+
                     </div>
                 </div>
             </section>
@@ -868,9 +861,17 @@
             <section class="hero">
                 <div class="hero-card">
                     <div class="hero-inner">
-                        <span class="kicker">👕 Roupas • apoio ao criador</span>
-                        <h2 class="hero-title">Roupas à venda no grupo</h2>
-                        <p class="hero-desc">No grupo do Roblox você encontra roupas e itens. Ao comprar por lá, você <strong>apoia diretamente</strong> o criador (Theus) e fortalece novos drops.</p>
+                        <span class="kicker">💙 Apoio ao criador</span>
+                        <h2 class="hero-title">Meu grupo no Roblox</h2>
+                        <p class="hero-desc">
+                            Ao comprar na loja, você me apoia a continuar criando conteúdo e mantendo tudo ativo. 💙
+                            <br><br>
+                            Se quiser apoiar ainda mais, entre no meu <strong>grupo do Roblox</strong>.
+                            Lá você encontra roupas exclusivas que podem ser compradas com Robux.
+                            <br><br>
+                            Mesmo entrando no grupo sem comprar nada, você já me ajuda bastante.
+                            E claro, não esqueça de <strong>me seguir no Roblox</strong>!
+                        </p>
 
                         <div class="grid cols-2" style="margin-top: 15px;">
                             <article class="card">
@@ -885,24 +886,43 @@
 
                         <div class="hero-actions" style="margin-top: 15px;">
                             <a href="https://www.roblox.com/groups" target="_blank" class="btn btn-primary">
-                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                                    <path d="M12 12a4 4 0 1 0-4-4 4 4 0 0 0 4 4Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
+                                <img
+                                  src="https://tr.rbxcdn.com/180DAY-2f6b47f735c379cfa4aabd861b0e3b3e/150/150/Image/Webp/noFilter"
+                                  alt="Grupo do Roblox"
+                                  class="btn-icon"
+                                  style="width:36px;height:36px;border-radius:10px;object-fit:cover;"
+                                />
                                 Acessar Grupo
                             </a>
-                            <a href="https://www.roblox.com/" target="_blank" class="btn">
-                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
-                                    <path d="M8 3h8l5 5v8l-5 5H8l-5-5V8l5-5Z" stroke="currentColor" stroke-width="2"/>
-                                </svg>
+
+                            <!-- ✅ FIX: botão de perfil corrigido (tags alinhadas) -->
+                            <a href="https://www.roblox.com/users/7516764117/profile" target="_blank" class="btn">
+                                <img
+                                  src="https://tr.rbxcdn.com/30DAY-AvatarHeadshot-D2C403E8EA2811BDB2DA5FEE2D6C9B8F-Png/150/150/AvatarHeadshot/Webp/noFilter"
+                                  alt="Perfil do Theus no Roblox"
+                                  class="btn-icon"
+                                  style="width:36px;height:36px;border-radius:50%;object-fit:cover;"
+                                />
                                 Perfil do Theus
                             </a>
                         </div>
+
                     </div>
                 </div>
             </section>
         </div>
     </div>
 
+    <!-- LIGHTBOX -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <div class="lightbox-card" role="dialog" aria-modal="true" aria-label="Visualização ampliada">
+            <button class="lightbox-close" id="lightboxClose" type="button">Fechar ✕</button>
+            <img id="lightboxImg" alt="Imagem ampliada do estoque">
+            <div class="lightbox-hint">Dica: toque fora da imagem para fechar • ESC no PC</div>
+        </div>
+    </div>
+
+    <!-- ✅ FIX: script movido para dentro do body -->
     <script>
         // ====== NEVE (mais leve no mobile + respeita reduzir movimento) ======
         function createSnowflakes() {
@@ -937,37 +957,38 @@
             }
         }
 
-        // ====== STATUS ======
-       // ====== STATUS (GLOBAL via JSON) ======
-const STATUS_URL = "https://raw.githubusercontent.com/specteteu/specteteu-status/main/status.json";
+        // ====== STATUS (GLOBAL via JSON) ======
+        const STATUS_URL = "https://raw.githubusercontent.com/specteteu/specteteu-status/main/status.json";
 
-function applyStatus(key) {
-  const map = {
-    on:   { text: "🟢 ON", color: "#4CAF50" },
-    off:  { text: "🔴 OFF", color: "#FF4D4D" },
-    live: { text: "🟣 EM LIVE (TikTok)", color: "#B26BFF" }
-  };
+        function applyStatus(key) {
+            const map = {
+                on:   { text: "🟢 ON", color: "#4CAF50" },
+                off:  { text: "🔴 OFF", color: "#FF4D4D" },
+                live: { text: "🟣 EM LIVE (TikTok)", color: "#B26BFF" }
+            };
 
-  const s = map[key] || map.on;
+            const s = map[key] || map.on;
 
-  const dot = document.getElementById("statusDot");
-  const text = document.getElementById("statusText");
+            const dot = document.getElementById("statusDot");
+            const text = document.getElementById("statusText");
+            if (!dot || !text) return;
 
-  dot.style.background = s.color;
-  dot.style.boxShadow = `0 0 14px ${s.color}CC, 0 0 30px ${s.color}55`;
-  text.textContent = s.text;
-}
+            dot.style.background = s.color;
+            dot.style.boxShadow = `0 0 14px ${s.color}CC, 0 0 30px ${s.color}55`;
+            text.textContent = s.text;
+        }
 
-async function loadGlobalStatus() {
-  try {
-    const res = await fetch(STATUS_URL + "?ts=" + Date.now(), { cache: "no-store" });
-    const data = await res.json();
-    const key = String(data.status || "on").toLowerCase();
-    applyStatus(key);
-  } catch (e) {
-    applyStatus("on"); // fallback
-  }
-}
+        async function loadGlobalStatus() {
+            try {
+                const res = await fetch(STATUS_URL + "?ts=" + Date.now(), { cache: "no-store" });
+                const data = await res.json();
+                const key = String(data.status || "on").toLowerCase();
+                applyStatus(key);
+            } catch (e) {
+                applyStatus("on"); // fallback
+            }
+        }
+
         // ====== NAVEGAÇÃO COM HASH ======
         const routes = {
             home: 'homePage',
@@ -997,7 +1018,7 @@ async function loadGlobalStatus() {
 
         // ====== GALERIA + LIGHTBOX ======
         const SHOTS = [
-            { src: 'assets/shot-1.jpg', alt: 'Estoque / Valores - imagem 1' },
+            { src: 'assets/shot-1.png', alt: 'Estoque / Valores - imagem 1' },
             { src: 'assets/shot-2.jpg', alt: 'Estoque / Valores - imagem 2' },
             { src: 'assets/shot-3.jpg', alt: 'Estoque / Valores - imagem 3' }
         ];
@@ -1079,14 +1100,5 @@ async function loadGlobalStatus() {
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
         });
     </script>
-
-    <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox" aria-hidden="true">
-        <div class="lightbox-card" role="dialog" aria-modal="true" aria-label="Visualização ampliada">
-            <button class="lightbox-close" id="lightboxClose" type="button">Fechar ✕</button>
-            <img id="lightboxImg" alt="Imagem ampliada do estoque">
-            <div class="lightbox-hint">Dica: toque fora da imagem para fechar • ESC no PC</div>
-        </div>
-    </div>
 </body>
 </html>
