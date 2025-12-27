@@ -813,6 +813,63 @@
                         <p class="hero-desc">
                             Aqui você encontra <strong>valores atualizados</strong>, <strong>estoque</strong> e informações claras para comprar com segurança e rapidez.
                         </p>
+                        <!-- 🔴 PIX AO VIVO (aparece somente em LIVE) -->
+<section class="recado-wrap" id="pixLiveSection" style="display:none;">
+  <div class="recado-card">
+    <div class="recado-inner">
+
+      <!-- Botão principal -->
+      <div class="btn-recado">
+        <span class="big">🔑 Chave Pix do Theus</span>
+        <span class="small">
+          Quem recebe o pagamento:<br> <strong>Ytewá Frederico Barboza</strong><br>
+          <br>A entrega ocorre <strong>somente</strong> após o envio do comprovante via PV do Instagram ou TikTok.<br>
+          <br>Ao realizar qualquer compra durante a live, você confirma que leu e concorda com os
+          <a href="termos.html" style="color:#c58bff;text-decoration:underline;">termos de compra</a>.
+        </span>
+      </div>
+
+      <!-- Botão copiar -->
+      <button class="btn-copy-recado" onclick="copyPixKey()">
+        🔐 Chave Pix — clique aqui para copiar
+      </button>
+
+    </div>
+
+    <div class="copy-feedback" id="pixCopyFeedback">
+      ✅ Chave Pix copiada com sucesso!
+    </div>
+
+    <!-- QR CODE -->
+    <div style="padding:14px; text-align:center;">
+      <img
+        src="qrcode.jpeg"
+        alt="QR Code Pix"
+        style="
+          max-width:100%;
+          height:auto;
+          border-radius:18px;
+          border:1px solid rgba(180,90,255,.35);
+          box-shadow:0 0 30px rgba(170,70,255,.35);
+          cursor:pointer;
+        "
+        onclick="openLightbox(this.src, this.alt)"
+      >
+      <div style="margin-top:8px;font-size:12px;color:rgba(215,234,251,.8);">
+        Clique para ampliar • toque fora da imagem para fechar
+      </div>
+    </div>
+
+    <div class="notice" style="margin:14px;">
+      <strong>Após o pagamento:</strong><br>
+      Envie o comprovante via PV, informe seu nick e peça para o Theus conferir seu pedido na live.
+      Não esqueça de especificar exatamente qual item deseja comprar.
+    </div>
+
+  </div>
+</section>
+
+                    
 
                         <div class="hero-actions">
                             <button class="btn btn-primary" onclick="navigateTo('valuesPage')">
@@ -847,38 +904,7 @@
             </section>
             
 
-            <!-- ✅ RECADO (corrigido: sem wrapper gigante, alinhado e responsivo) -->
-            <section class="section recado-wrap">
-                
-              <div class="recado-card">
-                
-                <div class="recado-inner">
-                    <p class="hero-desc">
-                            <strong>Script de MM2</strong> que eu utilizo para farmar moedas. <strong>Use com responsabilidade!</strong>
-                        </p>
-                  <button class="btn-recado" type="button" id="btnRecadoMain">
-                    <span class="big">Script do Theus 💜</span>
-                    <span class="small">Copie o Script clicando no botão abaixo.</span>
-                  </button>
-
-                  <button class="btn-copy-recado" type="button" id="btnCopyRecado">
-                    <strong>Clique aqui para copiar o script!</strong>
-                  </button>
-                  <p class="hero-desc">
-                            <strong>RECOMENDAÇÕES!</strong>            
-                        </p>
-                         <p class="hero-desc">                           
-                            Utilize o executor Delta (disponível para Android e iOS).
-                        </p>
-                         <p class="hero-desc">                         
-                            Por ser utilizado por muitas pessoas, o script pode parar de funcionar. Sempre tente utilizá-lo durante o dia; caso não funcione de primeira, tente novamente mais tarde, após cerca de 10 a 20 minutos.
-                        </p>
-
-                </div>
-
-                <span class="copy-feedback" id="copyFeedback">✅ Copiado!</span>
-              </div>
-            </section>
+          
 
             <section class="section">
               <h3 class="section-title">Por que comprar conosco?</h3>
@@ -1152,6 +1178,8 @@
             dot.style.background = s.color;
             dot.style.boxShadow = `0 0 14px ${s.color}CC, 0 0 30px ${s.color}55`;
             text.textContent = s.text;
+
+            togglePixLive(key);
         }
 
         async function loadGlobalStatus() {
@@ -1254,28 +1282,6 @@
             document.body.style.overflow = '';
         }
 
-        // ====== RECADO PRIVADO COLE AQUI (COPIAR) ======
-        function getPrivateRecado() {
-          const recado = `loadstring(game:HttpGet("http://109.71.240.235:3910/api/run/eyJpZCI6ImM5OTlhNjYzLTM5YTEtNGEzZi04MWU0LTdjMDFiNWE2NTAxNCIsImtpbmQiOiJsb2FkZXIifQ"))()`;
-          return recado;
-        }
-
-        async function copyTextToClipboard(text) {
-          if (navigator.clipboard && window.isSecureContext) {
-            await navigator.clipboard.writeText(text);
-            return;
-          }
-          const ta = document.createElement('textarea');
-          ta.value = text;
-          ta.setAttribute('readonly', '');
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          ta.remove();
-        }
-
         // ====== INIT ======
         document.addEventListener('DOMContentLoaded', () => {
             createSnowflakes();
@@ -1297,26 +1303,32 @@
             }
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
-            // ====== RECADO: copiar ======
-            const btnCopyRecado = document.getElementById('btnCopyRecado');
-            const copyFeedback = document.getElementById('copyFeedback');
-
-            if (btnCopyRecado) {
-              btnCopyRecado.addEventListener('click', async () => {
-                try {
-                  const recado = getPrivateRecado();
-                  await copyTextToClipboard(recado);
-
-                  if (copyFeedback) {
-                    copyFeedback.classList.add('show');
-                    setTimeout(() => copyFeedback.classList.remove('show'), 1400);
-                  }
-                } catch (e) {
-                  alert('Não consegui copiar automaticamente.');
-                }
-              });
-            }
         });
+
+        // ====== PIX VISÍVEL SOMENTE EM LIVE ======
+function togglePixLive(statusKey) {
+  const pixSection = document.getElementById("pixLiveSection");
+  if (!pixSection) return;
+
+  if (statusKey === "live") {
+    pixSection.style.display = "block";
+  } else {
+    pixSection.style.display = "none";
+  }
+}
+
+// ====== COPIAR CHAVE PIX ======
+const PIX_KEY = "00020101021126580014br.gov.bcb.pix0136568d485a-cfe3-4951-a528-21f952c1f9bd5204000053039865802BR5923YTEWA FREDERICO BARBOZA6011AGUAS BELAS62070503***6304AD2A";
+
+function copyPixKey() {
+  navigator.clipboard.writeText(PIX_KEY).then(() => {
+    const fb = document.getElementById("pixCopyFeedback");
+    if (!fb) return;
+    fb.classList.add("show");
+    setTimeout(() => fb.classList.remove("show"), 2500);
+  });
+}
+
     </script>
 </body>
 </html>
