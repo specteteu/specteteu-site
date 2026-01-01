@@ -930,6 +930,22 @@
             </section>
 
             <section class="section">
+                <h3 class="section-title">Formulário do Theus</h3>
+                <div class="notice">
+                    
+                    Clique no botão abaixo para acessar a aba do formulário, inscreva-se e corra a chance de fazer parte do Time do Theus, uma oportunidade de ganhar <strong>dinheiro</strong> ou <strong>godlys</strong> no MM2 em troca da sua ajuda e parceria. Acesse abaixo para saber mais!
+                    <div class="hero-actions" style="margin-top: 12px;">
+                        <button class="btn btn-primary" onclick="navigateTo('formPage')">
+                            <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 3v18M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                            Acessar formulário
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section">
                 <h3 class="section-title">Acesso rápido</h3>
                 <div class="grid cols-2">
                     <div class="notice">
@@ -1113,6 +1129,51 @@
                 </div>
             </section>
         </div>
+
+        <!-- FORM PAGE -->
+        <div id="formPage" class="page">
+            <a href="#" class="back-btn" onclick="navigateTo('homePage'); return false;">
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                    <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+                Voltar ao Início
+            </a>
+
+            <section class="hero">
+                <div class="hero-card">
+                    <div class="hero-inner">
+                        <span class="kicker">📝 Time do Theus</span>
+                        <h2 class="hero-title">Formulário do Theus</h2>
+                        <p class="hero-desc">Inscreva-se e saiba mais sobre como fazer parte do Time do Theus.</p>
+
+                        <div class="card" style="padding: 12px; margin-top: 12px;">
+                            <img
+                                src="formulario.png"
+                                alt="Formulário do Theus"
+                                style="width:100%;height:auto;border-radius:18px;border:1px solid rgba(136,183,243,.22);box-shadow:0 14px 40px rgba(0,0,0,.35);cursor:pointer;"
+                                onclick="openLightbox(this.src, this.alt)"
+                            >
+                            <div style="margin-top:8px;font-size:12px;color:rgba(215,234,251,.8);text-align:center;">
+                                Clique para ampliar • toque fora da imagem para fechar
+                            </div>
+                        </div>
+
+                        <div class="hero-actions" style="margin-top: 14px;">
+                            <a href="https://forms.gle/3PiBbRQUuupcb1Eu7" target="_blank" rel="noreferrer" class="btn btn-primary">
+                                <svg class="btn-icon" viewBox="0 0 24 24" fill="none">
+                                    <path d="M14 3h7v7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M10 14 21 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    <path d="M21 14v6a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                </svg>
+                                Clique aqui para acessar o formulário do Theus
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </div>
+
     </div>
 
     <!-- LIGHTBOX -->
@@ -1200,6 +1261,8 @@
             termos: 'termsPage',
             grupo: 'groupPage'
         };
+
+        routes.formulario = 'formPage';
 
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
